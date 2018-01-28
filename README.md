@@ -111,6 +111,8 @@ proxy requests. The following options are supported:
   Example: `600` - Allow CORS preflight request to be cached by the browser for 10 minutes.
 * string `helpFile` - Set the help file (shown at the homepage).  
   Example: `"myCustomHelpText.txt"`
+* array of lowercase strings `removeResponseHeaders` - Exclude certain headers from being included in the response.  
+  Example: `["cookie3"]`
 
 For advanced users, the following options are also provided.
 

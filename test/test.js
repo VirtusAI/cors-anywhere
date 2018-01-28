@@ -1052,3 +1052,20 @@ describe('helpFile', function() {
       .expect(500, '', done);
   });
 });
+
+describe('removeResponseHeaders', function() {
+  before(function() {
+    cors_anywhere = createServer({
+      removeResponseHeaders: ['set-cookie3'],
+    });
+    cors_anywhere_port = cors_anywhere.listen(0).address().port;
+  });
+  after(stopServer);
+
+  it('Ignore headers', function(done) {
+    request(cors_anywhere)
+      .get('/example.com/setcookie')
+      .expect('Access-Control-Allow-Origin', '*')
+      .expectNoHeader('set-cookie3', done);
+  });
+});
